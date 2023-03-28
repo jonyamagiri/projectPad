@@ -1,7 +1,9 @@
-from flask import render_template, url_for, flash, redirect
-from projectpad import app
+from flask import render_template, url_for, flash, redirect, request
+from projectpad import app, db
 from projectpad.forms import RegistrationForm, LoginForm
 from projectpad.models import User, Article
+from flask_login import login_user, current_user, logout_user, login_required
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 # dummy data for testing
@@ -39,20 +41,44 @@ def about():
 @app.route("/register", strict_slashes=False, methods=['GET', 'POST'])
 def register():
     """Returns the register page"""
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash("Account created for {}".format(form.username.data), 'success')
+        hashed_password = generate_password_hash(form.password.data)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash("Your account has been created! You can now log in.", 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
 @app.route("/login", strict_slashes=False, methods=['GET', 'POST'])
 def login():
     """Returns the login page"""
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'myself@example.com'and form.password.data == 'password':
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
             flash('You have been logged in!', 'success')
-            return redirect(url_for('project_log'))
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('project_log'))
         else:
-            flash('Login failed! Please check your username or password and try again', 'danger')
+            flash('Login failed! Please check your email or password and try again', 'danger')
     return render_template('login.html', title='Login', form=form)
+
+@app.route("/logout")
+def logout():
+    """Returns the logout page"""
+    logout_user()
+    return redirect(url_for('home'))
+
+
+@app.route("/account")
+@login_required
+def account():
+    """Returns the account page"""
+    return render_template('account.html', title='Account')

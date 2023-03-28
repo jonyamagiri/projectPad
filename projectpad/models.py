@@ -1,8 +1,23 @@
 from datetime import datetime
-from projectpad import db
+from projectpad import db, login_manager
+from flask_login import UserMixin
 
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    """
+    A function that loads a user from the database.
+
+    Attributes:
+        user_id (int): The unique identifier for the user.
+
+    Returns:
+        User: The user with the given ID.
+    """
+    return User.query.get(int(user_id))
+
+
+class User(db.Model, UserMixin):
     """
     A class representing a user.
 
