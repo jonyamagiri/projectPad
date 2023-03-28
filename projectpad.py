@@ -1,10 +1,63 @@
+from datetime import datetime
 from flask import Flask, render_template, url_for, flash, redirect
+from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
+
+
 """starts a flask web application"""
-
-
 app = Flask(__name__)
+
+
+"""configures the flask application"""
 app.config['SECRET_KEY'] = '2b709ee3c5f6efa2f8e64048e04f230c'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
+db = SQLAlchemy(app)
+
+
+class User(db.Model):
+    """
+    A class representing a user.
+
+    Attributes:
+        id (int): The unique identifier for the user.
+        username (str): The user's username.
+        email (str): The user's email address.
+        image_file (str): The filename of the user's profile image.
+        password (str): The user's hashed password.
+        articles (RelationshipProperty): A relationship to the user's articles, represented by the 'Article' class.
+    """
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    image_file = db.Column(db.String(120), nullable=False, default='default.jpg')
+    password = db.Column(db.String(60), nullable=False)
+    articles = db.relationship('Article', backref='author', lazy=True)
+
+    def __repr__(self):
+        """ Returns a string representation of the user """
+        return "User('{}', '{}', '{}')".format(self.username, self.email, self.image_file)
+
+class Article(db.Model):
+    """
+    A class representing an article.
+
+    Attributes:
+        id (int): The unique identifier for the article.
+        title (str): The title of the article.
+        date_created (datetime): The date and time the article was created.
+        content (str): The content of the article.
+        user_id (int): The foreign key referring to the ID of the user who created the article from the 'User' class.
+    """
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+
+    def __repr__(self):
+        """ Returns a string representation of the article """
+        return "Article('{}', '{}', '{}')".format(self.title, self.date_created)
 
 
 # dummy data for testing
