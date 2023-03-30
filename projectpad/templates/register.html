@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="content-section">
+<div class="content-section col-md-5 ms-md-auto">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
@@ -17,7 +17,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.username(class="form-control form-control-lg") }}
+                {{ form.username(class="form-control form-control-lg mb-2") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -30,7 +30,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.email(class="form-control form-control-lg") }}
+                {{ form.email(class="form-control form-control-lg mb-2") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -43,7 +43,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.password(class="form-control form-control-lg") }}
+                {{ form.password(class="form-control form-control-lg mb-2") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -56,7 +56,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.confirm_password(class="form-control form-control-lg") }}
+                {{ form.confirm_password(class="form-control form-control-lg mb-2") }}
                 {% endif %}
             </div>
         </fieldset><br>
@@ -66,7 +66,7 @@
     </form>
 </div>
 
-<div class="border-top pt-3">
+<div class="border-top pt-3 col-md-5 ms-md-auto">
     <small class="text-muted">
         Already have an account? <a class="ml-2" href="{{ url_for('login') }}">Log In</a>
     </small>

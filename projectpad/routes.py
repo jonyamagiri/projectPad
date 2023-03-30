@@ -1,49 +1,30 @@
 import os
 import secrets
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from projectpad import app, db
-from projectpad.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from projectpad.forms import RegistrationForm, LoginForm, UpdateAccountForm, ArticleForm
 from projectpad.models import User, Article
 from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-# dummy data for testing
-articles = [
-    {
-        'author': 'Kara Danvers',
-        'title': 'Article 1',
-        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias illo, eveniet odio quasi eaque sed voluptatum ducimus earum molestiae voluptates',
-        'date_created': 'Jan 20, 2023'
-    },
-    {
-        'author': 'James Olsen',
-        'title': 'Article 2',
-        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti doloribus dolorum quia. Ea esse excepturi blanditiis quas ullam, quae sed temporibus, ab a, magni deleniti.',
-        'date_created': 'Feb 14, 2023'
-    }
-]
+
 
 @app.route("/", strict_slashes=False)
 @app.route("/home")
 def home():
-    """Returns the home page"""
-    return render_template('home.html', articles=articles)
-
-@app.route("/project_log", strict_slashes=False)
-def project_log():
-    """Returns the project_log page"""
-    return render_template('project_log.html', title='Project Logs', articles=articles)
+    """Serves the home page"""
+    return render_template('home.html')
 
 @app.route("/about", strict_slashes=False)
 def about():
-    """Returns the about page"""
+    """Serves the about page"""
     return render_template('about.html', title='About')
 
 @app.route("/register", strict_slashes=False, methods=['GET', 'POST'])
 def register():
-    """Returns the register page"""
+    """Serves the register page"""
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = RegistrationForm()
@@ -58,7 +39,7 @@ def register():
 
 @app.route("/login", strict_slashes=False, methods=['GET', 'POST'])
 def login():
-    """Returns the login page"""
+    """Serves the login page"""
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
@@ -68,14 +49,14 @@ def login():
             login_user(user, remember=form.remember.data)
             flash('You have been logged in!', 'success')
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('project_log'))
+            return redirect(next_page) if next_page else redirect(url_for('dashboard'))
         else:
             flash('Login failed! Please check your email or password and try again', 'danger')
     return render_template('login.html', title='Login', form=form)
 
-@app.route("/logout")
+@app.route("/logout", strict_slashes=False)
 def logout():
-    """Returns the logout page"""
+    """Serves the logout page"""
     logout_user()
     return redirect(url_for('home'))
 
@@ -94,10 +75,10 @@ def save_picture(form_picture):
     return picture_fn
 
 
-@app.route("/account", methods=['GET', 'POST'])
+@app.route("/account", strict_slashes=False, methods=['GET', 'POST'])
 @login_required
 def account():
-    """Returns the account page"""
+    """Serves the account page"""
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -114,3 +95,57 @@ def account():
     image_file = url_for('static', filename='images/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 
+@app.route("/dashboard", strict_slashes=False)
+@login_required
+def dashboard():
+    """Serves the dashboard page"""
+    articles = Article.query.filter_by(author=current_user)
+    return render_template('dashboard.html', title='Dashboard', articles=articles)
+
+@app.route("/article/new", strict_slashes=False, methods=['GET', 'POST'])
+@login_required
+def new_article():
+    form = ArticleForm()
+    if form.validate_on_submit():
+        article = Article(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(article)
+        db.session.commit()
+        flash('Your article has been created!', 'success')
+        return redirect(url_for('dashboard'))
+    return render_template('create_article.html', title='New Article', form=form, legend='New Article')
+
+@app.route("/article/<int:article_id>", strict_slashes=False)
+def article(article_id):
+    article = Article.query.get_or_404(article_id)
+    return render_template('article.html', title=article.title, article=article)
+
+
+@app.route("/article/<int:article_id>/update", strict_slashes=False, methods=['GET', 'POST'])
+@login_required
+def update_article(article_id):
+    article = Article.query.get_or_404(article_id)
+    if article.author != current_user:
+        abort(403)
+    form = ArticleForm()
+    if form.validate_on_submit():
+        article.title = form.title.data
+        article.content = form.content.data
+        db.session.commit()
+        flash('Your article has been updated!', 'success')
+        return redirect(url_for('article', article_id=article.id))
+    elif request.method == 'GET':
+        form.title.data = article.title
+        form.content.data = article.content
+    return render_template('create_article.html', title='Update Article', form=form, legend='Update Article')
+
+
+@app.route("/article/<int:article_id>/delete", strict_slashes=False, methods=['POST'])
+@login_required
+def delete_article(article_id):
+    article = Article.query.get_or_404(article_id)
+    if Article.author != current_user:
+        abort(403)
+    db.session.delete(article)
+    db.session.commit()
+    flash('Your article has been deleted!', 'success')
+    return redirect(url_for('home'))

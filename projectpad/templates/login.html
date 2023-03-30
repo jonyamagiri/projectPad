@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="content-section">
+<div class="content-section col-md-5 ms-md-auto">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
@@ -16,7 +16,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.email(class="form-control form-control-lg") }}
+                {{ form.email(class="form-control form-control-lg mb-2") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -29,9 +29,9 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.password(class="form-control form-control-lg") }}
+                {{ form.password(class="form-control form-control-lg mb-2") }}
                 {% endif %}
-            </div>
+            </div><br>
             <div class="form-check">
                 {{ form.remember(class="form-check-input") }}
                 {{ form.remember.label(class="form-check-label") }}
@@ -45,7 +45,7 @@
         </small>
     </form>
 </div>
-<div class="border-top pt-3">
+<div class="border-top pt-3 col-md-5 ms-md-auto">
     <small class="text-muted">
         Don't have an account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Here</a>
     </small>
