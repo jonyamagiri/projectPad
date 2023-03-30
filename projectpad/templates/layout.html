@@ -24,6 +24,7 @@
 </head>
 
 <body>
+  <!-- Dynamically rendering the page title -->
   <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
       <div class="container">
@@ -39,7 +40,7 @@
             <a class="nav-item nav-link" href="{{ url_for('project_log')}}">Project-Logs</a>
           </div>
           <!-- Navbar Right Side -->
-          <div class="navbar-nav">
+          <div class="navbar-nav ms-auto mb-2 mb-lg-0">
             {% if current_user.is_authenticated %}
               <a class="nav-item nav-link" href="{{ url_for('account')}}">Account</a>
               <a class="nav-item nav-link" href="{{ url_for('logout')}}">Logout</a>
@@ -95,8 +96,8 @@
       <div class="container text-center text-md-left">
         <div class="row text-center text-md-left">
           <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-            <h5 class="mb-2 font-weight-bold text-warning">iCreate</h5>
-            <p>Number #1 provider of lab project management tools focused on efficiency and efficient workflows.</p>
+            <h5 class="mb-2 font-weight-bold text-warning">iCreate Inc.</h5>
+            <p>Number #1 provider of lab project management tools focused on efficient workflows.</p>
           </div>
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
             <h5 class="mb-2 font-weight-bold text-warning">Products</h5>
@@ -116,8 +117,8 @@
           <div class="mb-1">
             <div class="row align-items-center">
               <div class="col-md-7 col-lg-8">
-                <p>Copyright @2023 All rights reserved by:
-                  <a href="#" style="text-decoration: none;"><strong>The iCreate Team</strong></a>
+                <p>Copyright @2023 All rights reserved by: 
+                  <a href="#" style="text-decoration: none;"><strong> The iCreate Team</strong></a>
                 </p>
               </div>
               <div class="col-md-5 col-lg-4">
