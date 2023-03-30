@@ -1,8 +1,51 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>About Page</h1>
-    <br>
-    <hr>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, optio sit tempore non sequi vitae. Ipsum nesciunt soluta maiores eligendi debitis sequi iure veritatis saepe aut, ipsam quaerat doloremque accusantium, beatae corporis suscipit consequuntur quisquam exercitationem repellendus quidem. Rerum ducimus a autem dignissimos quisquam illo numquam, natus expedita architecto animi provident, assumenda reiciendis cumque vel et ea dolorum earum quia unde modi. Magni provident quam quisquam eaque optio architecto quibusdam at maxime asperiores obcaecati est recusandae repudiandae quasi quidem, debitis quis velit voluptates magnam facilis sit illum dicta ducimus voluptatibus id? Vitae deleniti modi harum incidunt unde tempore quaerat nulla.</p>
+<!-- brief about ProjectpPad section -->
+<h1>About Us</h1>
+<br>
+<hr>
+<p>
+    ProjectPad is a web app designed for lab project management. It allows users to create and manage project-logs for their experiments in an organized manner. With a focus on efficient workflow, ProjectPad streamlines your lab project management like never before.
+</p>
+<br>
+<!-- brief FAQs about ProjectpPad-->
+<h3>FAQs</h3>
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Is ProjectPad secure?
+            </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Yes, ProjectPad uses industry-standard security measures to protect your data. It encrypts all data transmissions and stores your data in secure servers. Additionally, each user can create an account to login and manage their data securely.
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Is ProjectPad easy to use?
+            </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Yes, ProjectPad is designed to be user-friendly and intuitive. Its user interface is simple and easy to navigate. You can quickly create and manage notes for your experiments without any technical knowledge or training.</div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                Can I access ProjectPad from anywhere?
+            </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Yes, ProjectPad is a web app, which means that you can access it from any device with an internet connection. You can work on your lab projects from your desktop, laptop, tablet, or smartphone, regardless of your location.</div>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}
