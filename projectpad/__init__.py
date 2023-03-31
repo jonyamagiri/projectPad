@@ -1,10 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_ckeditor import CKEditor
 
 
 """starts a flask web application"""
 app = Flask(__name__)
+ckeditor = CKEditor(app)
 
 
 """configures the flask application"""

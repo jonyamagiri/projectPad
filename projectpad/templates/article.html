@@ -6,7 +6,7 @@
         src="{{ url_for('static', filename='images/' + article.author.image_file) }}">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ article.author.username }}</a>
+            <a class="mr-2" href="{{ url_for('account')}}">{{ article.author.username }}</a>
             <small class="text-muted">{{ article.date_created.strftime('%d-%m-%Y') }}</small>
             {% if article.author == current_user %}
             <div>
@@ -18,7 +18,7 @@
             {% endif %}
         </div>
         <h2 class="article-title">{{ article.title }}</h2>
-        <p class="article-content">{{ article.content }}</p>
+        <p class="article-content">{{ article.content | safe }}</p>
     </div>
 </article>
 

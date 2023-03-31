@@ -75,21 +75,22 @@
       {% if current_user.is_authenticated %}
       <div class="col-md-3">
         <div class="content-section">
-          <h3>Articles Sidebar</h3>
+          <h4 class="fs-4">Articles Sidebar</h4>
           <p class='text-muted'>Lorem ipsum dolor sit amet.
           <ul class="list-group">
-            <li class="list-group-item list-group-item-light">Latest Articles</li>
+            <li class="list-group-item list-group-item-light"><a href="{{ url_for('dashboard')}}">Latest Articles</a></li>
             <li class="list-group-item list-group-item-light">Announcements</li>
             <li class="list-group-item list-group-item-light">Calendars</li>
           </ul>
           </p>
+          
         </div>
       </div>
       {% else %}
       <div class="col-md-2">
         <div class="content-section">
-          <h3>ProjectPad</h3>
-          <p class='text-muted'>Your one-stop shop:
+          <h3 class="fs-4">ProjectPad</h3>
+          <p class='text-muted fs-6'>Your one-stop shop:
           <ul class="list-group align-items-center">
             <li class="list-group-item list-group-item-light">Create</li>
             <li class="list-group-item list-group-item-light">Manage</li>

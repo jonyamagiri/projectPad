@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
 <div class="content-section">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
@@ -31,6 +32,9 @@
                 {% else %}
                 {{ form.content(class="form-control form-control-lg") }}
                 {% endif %}
+
+                {{ ckeditor.load() }}
+                {{ ckeditor.config(name='body') }}
             </div>
         </fieldset><br>
         <div class="form-group">

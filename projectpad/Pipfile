@@ -12,6 +12,7 @@ flask-bcrypt = "*"
 flask-login = "*"
 wheel = "*"
 pillow = "*"
+flask-ckeditor = "*"
 
 [dev-packages]
 
