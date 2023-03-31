@@ -95,11 +95,13 @@ def account():
     image_file = url_for('static', filename='images/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 
+
+
 @app.route("/dashboard", strict_slashes=False)
 @login_required
 def dashboard():
     """Serves the dashboard page"""
-    articles = Article.query.filter_by(author=current_user)
+    articles = Article.query.filter_by(author=current_user).order_by(Article.date_created.desc()).all()
     return render_template('dashboard.html', title='Dashboard', articles=articles)
 
 @app.route("/article/new", strict_slashes=False, methods=['GET', 'POST'])
