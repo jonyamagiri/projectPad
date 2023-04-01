@@ -76,21 +76,21 @@
       <div class="col-md-3">
         <div class="content-section">
           <h4 class="fs-4">Articles Sidebar</h4>
-          <p class='text-muted'>Lorem ipsum dolor sit amet.
+          <p class='text-muted'>Quick-Links
           <ul class="list-group">
             <li class="list-group-item list-group-item-light"><a href="{{ url_for('dashboard')}}">Latest Articles</a></li>
-            <li class="list-group-item list-group-item-light">Announcements</li>
-            <li class="list-group-item list-group-item-light">Calendars</li>
+            <li class="list-group-item list-group-item-light"><a href="{{ url_for('new_article')}}">New Article</a></li>
+            <li class="list-group-item list-group-item-light"><a href="{{ url_for('account')}}">Account</a></li>
           </ul>
           </p>
           
         </div>
       </div>
       {% else %}
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="content-section">
-          <h3 class="fs-4">ProjectPad</h3>
-          <p class='text-muted fs-6'>Your one-stop shop:
+          <h3>ProjectPad</h3>
+          <p class='text-muted fs-6'>You can:
           <ul class="list-group align-items-center">
             <li class="list-group-item list-group-item-light">Create</li>
             <li class="list-group-item list-group-item-light">Manage</li>

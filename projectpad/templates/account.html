@@ -3,11 +3,11 @@
 {% block content %}
 
 <!-- account details snapshot with profile image -->
-<div class="content-section">
+<div class="content-section col-md-8 ms-md-auto">
     <div class="media">
         <img class="rounded-circle account-img" src="{{ image_file }}">
         <div class="media-body">
-            <h2 class="account-heading">{{ current_user.username | title }}</h2>
+            <h2 class="account-heading">{{ current_user.username }}</h2>
             <p class="text-secondary">{{ current_user.email }}</p>
         </div>
     </div>
@@ -15,8 +15,8 @@
     <form method="POST" action="" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Account Details</legend>
-            <div class="form-group">
+            <legend class="border-bottom mb-3 fs-5">Account details</legend>
+            <div class="form-group mb-3 fs-6">
                 {{ form.username.label(class="form-control-label") }}
 
                 {% if form.username.errors %}
@@ -27,7 +27,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.username(class="form-control form-control-lg") }}
+                {{ form.username(class="form-control form-control-sm") }}
                 {% endif %}
             </div>
             <div class="form-group">
@@ -40,11 +40,11 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.email(class="form-control form-control-lg") }}
+                {{ form.email(class="form-control form-control-sm") }}
                 {% endif %}
             </div><br>
             <div class="form-group">
-                {{ form.picture.label() }}
+                {{ form.picture.label() }} <br>
                 {{ form.picture(class="form-control-file") }}
                 {% if form.picture.errors %}
                 {% for error in form.picture.errors %}
@@ -52,8 +52,8 @@
                 {% endfor %}
                 {% endif %}
             </div>
-        </fieldset><br>
-        <div class="form-group">
+        </fieldset>
+        <div class="form-group mt-2">
             {{ form.submit(class="btn btn-outline-info") }}
         </div>
     </form>

@@ -10,8 +10,8 @@
                 <a class="mr-2" href="{{ url_for('account')}}">{{ entry.author.username }}</a>
                 <small class="text-muted">{{ entry.date_created.strftime('%d-%m-%Y')}}</small>
             </div>
-            <h2><a class="article-title fs-5" href="{{ url_for('article', article_id=entry.id )}}">{{ entry.title }}</a></h2>
-            <p class="article-content fs-6">{{ entry.content | safe }}</p>
+            <h2><a class="article-title" href="{{ url_for('article', article_id=entry.id )}}">{{ entry.title }}</a></h2>
+            <p class="article-content">{{ entry.content | safe }}</p>
         </div>
     </article>
 {% endfor %}
