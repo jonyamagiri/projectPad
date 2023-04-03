@@ -1,5 +1,5 @@
 from datetime import datetime
-from projectpad import db, login_manager
+from projectpad import db, login_manager, app
 from flask_login import UserMixin
 
 
@@ -39,6 +39,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         """ Returns a string representation of the user """
         return "User('{}', '{}', '{}')".format(self.username, self.email, self.image_file)
+
 
 class Article(db.Model):
     """

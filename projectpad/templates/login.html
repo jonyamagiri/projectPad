@@ -31,23 +31,24 @@
                 {% else %}
                 {{ form.password(class="form-control form-control-sm mb-2") }}
                 {% endif %}
-            </div><br>
-            <div class="form-check">
+            </div>
+            <div class="form-check mt-2">
                 {{ form.remember(class="form-check-input") }}
                 {{ form.remember.label(class="form-check-label") }}
             </div>
-        </fieldset><br>
-        <div class="form-group">
+        </fieldset>
+        <div class="form-group mt-2">
             {{ form.submit(class="btn btn-outline-primary") }}
-        </div><br>
-        <small class="text-muted ml-2">
-            <a href="#">Forgot your password?</a>
-        </small>
+            <small class="text-muted ml-2 ms-2">
+                <a href="#">Forgot your password?</a>
+            </small>
+        </div>
+        
     </form>
 </div>
 <div class="border-top pt-3 col-md-5 ms-md-auto">
     <small class="text-muted">
-        Don't have an account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Here</a>
+        Don't have an account? <a class="ms-2" href="{{ url_for('register') }}">Sign Up Here</a>
     </small>
 </div>
 {% endblock content %}

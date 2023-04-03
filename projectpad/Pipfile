@@ -13,6 +13,8 @@ flask-login = "*"
 wheel = "*"
 pillow = "*"
 flask-ckeditor = "*"
+flask-mail = "*"
+itsdangerous = "*"
 
 [dev-packages]
 
