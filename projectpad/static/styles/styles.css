@@ -6,7 +6,7 @@ body {
     line-height: 1.428571429;
   }
   
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6 p {
     font-family: Arial, Helvetica, sans-serif;
     color: #444444;
   }
@@ -20,15 +20,15 @@ body {
   }
   
   .bg-steel {
-    background-color: #3b4852;
+    background-color: #012918;
   }
   
   .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+    color: #f2f5f6;
   }
   
   .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
+    color: #ffc107;
   }
   
   .site-header .navbar-nav .nav-link.active {
@@ -89,3 +89,13 @@ body {
   .account-heading {
     font-size: 1rem;
   }
+
+.cs-item {
+  height: 500px;
+}
+
+.cs-img {
+  height: 100%;
+  object-fit: cover;
+  filter:brightness(0.89);
+}

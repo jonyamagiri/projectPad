@@ -141,13 +141,13 @@ def update_article(article_id):
     return render_template('create_article.html', title='Update Article', form=form, legend='Update Article')
 
 
-@app.route("/article/<int:article_id>/delete", strict_slashes=False, methods=['POST'])
+@app.route("/article/<int:article_id>/delete", strict_slashes=False, methods=['GET','POST'])
 @login_required
 def delete_article(article_id):
     article = Article.query.get_or_404(article_id)
-    if Article.author != current_user:
+    if article.author!= current_user:
         abort(403)
     db.session.delete(article)
     db.session.commit()
-    flash('Your article has been deleted!', 'success')
-    return redirect(url_for('home'))
+    flash('Your article has been deleted!','success')
+    return redirect(url_for('dashboard', article_id=article.id))

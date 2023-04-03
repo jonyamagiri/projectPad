@@ -1,9 +1,257 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>Landing page</h1>
-    <p>Material for the landing page showcase will be found here</p>
-    <hr>
-    <br>
-    <img src="{{ url_for('static', filename='images/lab_scientist.jpg') }}" alt="scientist doing an experiment in a laboratory" width="800px">
+
+<!-- hero section -->
+<div class="container-fluid ms-5">
+    <h1 class="text-success fw-bold">ProjectPad</h1>
+    <h1>Effortlessly manage your Lab Projects.</h1>
+    <p class="lead my-4">
+        ProjectPad is the ultimate web app for lab project management, designed to streamline your workflow and make
+        managing your experiments a breeze.
+    </p>
+</div>
+<div class="container-fluid text-center">
+    <a class="btn btn-lg btn-warning" href="{{ url_for('register')}}">Dive into ProjectPad</a>
+</div>
+
+<br>
+
+<!-- carousel snapshots of the app -->
+
+<div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+    
+    <div class="carousel-inner">
+      <div class="carousel-item active cs-item">
+        <img src="{{ url_for('static', filename='images/projectpad_article_edit.png') }}" class="d-block w-100 cs-img" alt="...">
+      </div>
+      <div class="carousel-caption d-none d-md-block">
+        <a class="btn btn-sm btn-warning" href="{{ url_for('register')}}">Get Started</a>
+      </div>
+      <div class="carousel-item cs-item">
+        <img src="{{ url_for('static', filename='images/projectpad_dashboard.png') }}" class="d-block w-100 cs-img" alt="...">
+      </div>
+      <div class="carousel-caption d-none d-md-block">
+        <a class="btn btn-sm btn-warning" href="{{ url_for('register')}}">Get Started</a>
+      </div>
+      <div class="carousel-item cs-item">
+        <img src="{{ url_for('static', filename='images/projectpad_login.png') }}" class="d-block w-100 cs-img" alt="...">
+      </div>
+      <div class="carousel-caption d-none d-md-block">
+        <a class="btn btn-sm btn-warning" href="{{ url_for('register')}}">Get Started</a>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+</div>
+  <br>
+
+<!-- Accordion with features -->
+
+<section class="section mt-5 mb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <img src="{{ url_for('static', filename='images/projectpad_article_edit.png') }}" alt=""
+                    class="img-fluid mb-2">
+                <p class="mb-2">"Ready to streamline your lab project management? Sign up for ProjectPad now and experience effortless note-taking, easy team collaboration, comprehensive experiment tracking, and real-time progress updates."</p>
+            </div>
+
+            <div class="col-md-4">
+                <h2 class="mb-4 fw-bold">Lab project management simplified:</h2>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                Take-notes
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Create, edit, and organize notes easily. Add images, videos, and other multimedia elements. 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                Collaborate
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Easily share  notes and experiments with team members and collaborate in real-time.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                aria-controls="flush-collapseThree">
+                                It's web-ready
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Access it
+                                from any device with an internet connection. You can work on your lab projects from your
+                                desktop, laptop, tablet, or smartphone, regardless of your location.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                aria-controls="flush-collapseFour">
+                                Track experiments
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Overviews of your experiments, including their status, progress, and outcomes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- Scrollspy -->
+<h2 class="text-center fw-bold">Glowing tributes from our Users ... </h2>
+
+<div class="row mt-5">
+    <div class="col-4 mt-5">
+      <div id="list-example" class="list-group">
+        <a class="list-group-item list-group-item-action" href="#list-item-1">John, Senior Researcher</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-2">Sarah, Junior Researcher</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-3">Mark, Lab Manager</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-4">Emily, Research Assistant</a>
+      </div>
+    </div>
+    <div class="col-8">
+      <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+        <h4 class="fs-6" id="list-item-1">"ProjectPad has been a game-changer for our lab. The note-taking functionality is incredible and allows us to keep track of everything in one place. The team collaboration feature is also great, as it keeps everyone on the same page and ensures that we don't miss any important details. Overall, ProjectPad has made our lab projects much more efficient and streamlined."</h4>
+        <p>...</p>
+        <h4 class="fs-6" id="list-item-2">"As a new member of the lab, I was struggling to keep up with the fast-paced environment. However, since we started using ProjectPad, everything has become much clearer and organized. The experiment tracking feature is especially helpful, as it allows me to see exactly where we are in the project and what tasks need to be completed. I highly recommend ProjectPad to anyone who wants to take their lab project management to the next level."</h4>
+        <p>...</p>
+        <h4 class="fs-6" id="list-item-3">"ProjectPad has been a game-changer for my lab. With so many different experiments and projects going on at once, it can be challenging to keep track of everything. However, ProjectPad's real-time progress updates have made it much easier to stay on top of everything. The note-taking functionality is also very intuitive, and the ability to tag notes makes it easy to find what I'm looking for quickly. I can't imagine going back to our old system."</h4>
+        <p>...</p>
+        <h4 class="fs-6" id="list-item-4">"ProjectPad has been an incredible tool for our lab. The comprehensive experiment tracking feature has allowed us to see where we are in the project at all times, and the real-time progress updates have kept us on track and ensured that we meet our project deadlines. The team collaboration feature has also been very helpful, as it allows us to work together seamlessly, even when we're not in the same location. Overall, I would highly recommend ProjectPad to anyone looking for a powerful lab project management tool."</h4>
+        <p>...</p>
+      </div>
+    </div>
+  </div>
+  
+
+<!-- brief FAQs about ProjectpPad-->
+<h3>Frequently asked questions:</h3>
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Is ProjectPad secure?
+            </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Yes, ProjectPad uses industry-standard security measures to protect your data. It encrypts all data transmissions and stores your data in secure servers. Additionally, each user can create an account to login and manage their data securely.
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Is ProjectPad easy to use?
+            </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Yes, ProjectPad is designed to be user-friendly and intuitive. Its user interface is simple and easy to navigate. You can quickly create and manage notes for your experiments without any technical knowledge or training.</div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                Can I access ProjectPad from anywhere?
+            </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Yes, ProjectPad is a web app, which means that you can access it from any device with an internet connection. You can work on your lab projects from your desktop, laptop, tablet, or smartphone, regardless of your location.</div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                How can I search for specific notes or projects in ProjectPad?
+            </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">To search for specific notes or projects in ProjectPad, simply use the search bar at the top of the dashboard. You can search by keywords, tags, or other relevant criteria.</div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                How can I collaborate with my team members in ProjectPad?
+            </button>
+        </h2>
+        <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">To collaborate with your team members in ProjectPad, you can share your project or notes with them. You can also assign tasks and deadlines, and keep track of their progress.</div>
+        </div>
+    </div>
+</div><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock content %}
