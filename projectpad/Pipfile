@@ -37,6 +37,7 @@ werkzeug = "==2.2.3"
 wtforms = "==3.0.1"
 zipp = "==3.15.0"
 gunicorn = "*"
+pipreqs = "*"
 
 [dev-packages]
 
