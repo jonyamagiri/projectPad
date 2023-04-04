@@ -7,8 +7,6 @@ from projectpad.forms import RegistrationForm, LoginForm, UpdateAccountForm, Art
 from projectpad.models import User, Article
 from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_ckeditor import CKEditor
-
 
 
 @app.route("/", strict_slashes=False)
