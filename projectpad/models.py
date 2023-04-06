@@ -4,6 +4,7 @@ from projectpad import db, login_manager
 from flask_login import UserMixin
 
 
+# defines function that loads a user from the database
 @login_manager.user_loader
 def load_user(user_id):
     """
@@ -18,6 +19,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+# defines the User model
 class User(db.Model, UserMixin):
     """
     A class representing a user.
@@ -42,6 +44,7 @@ class User(db.Model, UserMixin):
         return "User('{}', '{}', '{}')".format(self.username, self.email, self.image_file)
 
 
+# defines the Article model
 class Article(db.Model):
     """
     A class representing an article.

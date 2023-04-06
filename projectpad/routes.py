@@ -9,17 +9,21 @@ from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
+# defines a Flask route for the home page
 @app.route("/", strict_slashes=False)
 @app.route("/home")
 def home():
     """Serves the home page"""
+    # Renders the home.html template and returns it as a response
     return render_template('home.html')
 
+# defines a Flask route for the about page
 @app.route("/about", strict_slashes=False)
 def about():
     """Serves the about page"""
     return render_template('about.html', title='About')
 
+# defines a Flask route for the register page
 @app.route("/register", strict_slashes=False, methods=['GET', 'POST'])
 def register():
     """Serves the register page"""
@@ -35,6 +39,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+# defines a Flask route for the login page
 @app.route("/login", strict_slashes=False, methods=['GET', 'POST'])
 def login():
     """Serves the login page"""
@@ -52,12 +57,14 @@ def login():
             flash('Login failed! Please check your email or password and try again', 'danger')
     return render_template('login.html', title='Login', form=form)
 
+# defines a Flask route for the logout page
 @app.route("/logout", strict_slashes=False)
 def logout():
     """Serves the logout page"""
     logout_user()
     return redirect(url_for('home'))
 
+# function resizes and saves the file to the static/images folder 
 def save_picture(form_picture):
     """ Saves and returns the picture uploaded via form """
     random_hex = secrets.token_hex(8)
@@ -65,6 +72,7 @@ def save_picture(form_picture):
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/images', picture_fn)
 
+    # Set the output size for the image and resize it
     output_size = (125, 125)
     i = Image.open(form_picture)
     i.thumbnail(output_size)
@@ -72,7 +80,7 @@ def save_picture(form_picture):
 
     return picture_fn
 
-
+# defines a Flask route for the account page
 @app.route("/account", strict_slashes=False, methods=['GET', 'POST'])
 @login_required
 def account():
@@ -94,7 +102,7 @@ def account():
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 
 
-
+# defines a Flask route for the dashboard page
 @app.route("/dashboard", strict_slashes=False)
 @login_required
 def dashboard():
@@ -102,6 +110,7 @@ def dashboard():
     articles = Article.query.filter_by(author=current_user).order_by(Article.date_created.desc()).all()
     return render_template('dashboard.html', title='Dashboard', articles=articles)
 
+# defines a Flask route for the new_article page
 @app.route("/article/new", strict_slashes=False, methods=['GET', 'POST'])
 @login_required
 def new_article():
@@ -114,12 +123,14 @@ def new_article():
         return redirect(url_for('dashboard'))
     return render_template('create_article.html', title='New Article', form=form, legend='New Article')
 
+# defines a Flask route for the given article page
 @app.route("/article/<int:article_id>", strict_slashes=False)
 def article(article_id):
     article = Article.query.get_or_404(article_id)
     return render_template('article.html', title=article.title, article=article)
 
 
+# defines a Flask route for the update_article page
 @app.route("/article/<int:article_id>/update", strict_slashes=False, methods=['GET', 'POST'])
 @login_required
 def update_article(article_id):
@@ -139,6 +150,7 @@ def update_article(article_id):
     return render_template('create_article.html', title='Update Article', form=form, legend='Update Article')
 
 
+# defines a Flask route for the delete_article page
 @app.route("/article/<int:article_id>/delete", strict_slashes=False, methods=['GET','POST'])
 @login_required
 def delete_article(article_id):

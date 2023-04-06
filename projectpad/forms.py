@@ -7,6 +7,7 @@ from flask_ckeditor import CKEditorField
 from projectpad.models import User
 
 
+# defines a FlaskForm subclass called RegistrationForm
 class RegistrationForm(FlaskForm):
     """
     Flask form for user registration.
@@ -53,6 +54,7 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('That email is taken. Please choose a different one.')
 
 
+# defines a FlaskForm subclass called LoginForm
 class LoginForm(FlaskForm):
     """
     Flask form for user login.
@@ -69,18 +71,21 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
+# defines a FlaskForm subclass called UpdateAccountForm
 class UpdateAccountForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     picture = FileField('Update your profile picture', validators=[FileAllowed(['jpg', 'jpeg', 'png', 'gif'])])
     submit = SubmitField('Update')
 
+    # validates the username
     def validate_username(self, username):
         if username.data != current_user.username:
             user = User.query.filter_by(username=username.data).first()
             if user:
                 raise ValidationError('That username is taken. Please choose a different one.')
 
+    # validates the email address
     def validate_email(self, email):
         if email.data != current_user.email:
             user = User.query.filter_by(email=email.data).first()
@@ -88,7 +93,16 @@ class UpdateAccountForm(FlaskForm):
                 raise ValidationError('That email is taken. Please choose a different one.')
 
 
+# defines a FlaskForm subclass called ArticleForm
 class ArticleForm(FlaskForm):
+    """
+    Defines form used to create and edit articles.
+
+    Attributes:
+        title: A `StringField` representing the title of the article.
+        content: A `CKEditorField` representing the content of the article.
+        submit: A `SubmitField` representing the submission button for the form.
+    """
     title = StringField('Title', validators=[DataRequired()])
     #content = TextAreaField('Content', validators=[DataRequired()])
     content = CKEditorField('Content', validators=[DataRequired()]) 
