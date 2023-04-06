@@ -17,7 +17,7 @@ This portfolio project was developed as part of the requirements for the Holbert
 - Author(s) [LinkedIn](https://www.linkedin.com/in/jonyamagiri/)
 
 
-# Inspiration 
+## Inspiration 
 As a former research scientist, I struggled with the challenge of keeping track of my notes on experiments and progress. I used to scribble notes in notebooks, and sometimes I found myself swimming in a sea of papers with my notes scattered all over the lab. It was frustrating and time-consuming to constantly search for some results I had written in a notebook that was nowhere to be found. It made it difficult to manage my projects effectively.
 
 When I started learning software engineering, I remembered the pain-point I experienced, and I decided to find a solution by creating a companion service that would be available on all devices. I wanted to develop an app that would streamline lab project management and make it easier for researchers to keep track of their experiments. The idea was to create a platform that allowed scientists to effortlessly create and manage notes for their experiments with a strong focus on efficient workflow. This led to development of ProjectPad, the ultimate web app for lab project management. The app simplifies the process of lab project management, making it easier for researchers to focus on their experiments and collect data efficiently. Now, researchers can create and manage notes for their experiments, visualize their data, and collaborate with team members to ensure successful research outcomes.
@@ -25,8 +25,7 @@ When I started learning software engineering, I remembered the pain-point I expe
 
 ## Features
 
-*** Current ***
-ProjectPad has four key features that make it an intuitive and efficient tool for lab project management:
+***Current***
 
 - [x] **Effortless Note-Taking:** Users can effortlessly create and manage notes for their experiments. The app provides a user-friendly interface for note-taking, making it easy to document and organize lab projects' progress and results.
 
@@ -34,7 +33,7 @@ ProjectPad has four key features that make it an intuitive and efficient tool fo
 
 - [x] **Secure Data Management:** ProjectPad ensures that users' data is secure and protected. The app provides encryption and data backup features, allowing users to safeguard their notes and related information.
 
-*** Future ***
+***Future***
 - [ ] **Streamlined Project Management:** ProjectPad streamlines the lab project management process, enabling users to manage their projects more efficiently. The app provides tools for task management, project tracking, and collaboration, allowing users to focus on their work and achieve their goals.
 
 
@@ -56,6 +55,7 @@ ProjectPad has four key features that make it an intuitive and efficient tool fo
 - HTML, CSS, and JavaScript
 - Bootstrap
 - Flask web framework
+- Python
 - SQLite3 database
 - Render.com cloud platform
 
@@ -70,11 +70,7 @@ To use ProjectPad on your local machine, you can follow the steps below:
 - Navigate to http://localhost:5000/ in your web browser to view the app.
 
 ## Usage
-To use ProjectPad, you need to create an account and log in. Once logged in, you can create and manage notes for your experiments, categorize notes according to project and experiment, edit and delete notes as needed. You can also visualize your data, collaborate with team members to ensure successful research outcomes, and update your account information using the account management dashboard.
-
-
-## Contributors
-ProjectPad was developed by Joab O. Nyamagiri, a software engineering student from Holberton School.
+To use [ProjectPad](https://projectpad.onrender.com/register), you need to create an account and log in. Once logged in, you can create and manage notes for your experiments, categorize notes according to project and experiment, edit and delete notes as needed. You can also visualize your data, collaborate with team members to ensure successful research outcomes, and update your account information using the account management dashboard.
 
 ## Contributing
 - ProjectPad was developed by Joab O. Nyamagiri, a software engineering student from ALX-Holberton School.
