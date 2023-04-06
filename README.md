@@ -34,7 +34,7 @@ When I started learning software engineering, I remembered the pain-point I expe
 - [x] **Secure Data Management:** ProjectPad ensures that users' data is secure and protected. The app provides encryption and data backup features, allowing users to safeguard their notes and related information.
 
 ***Future***
-- [ ] **Streamlined Project Management:** ProjectPad streamlines the lab project management process, enabling users to manage their projects more efficiently. The app provides tools for task management, project tracking, and collaboration, allowing users to focus on their work and achieve their goals.
+- [ ] **Streamlined Project Management:** ProjectPad will streamline the lab project management process, enabling users to manage their projects more efficiently. The app will provide tools for task management, project tracking, and collaboration, allowing users to focus on their work and achieve their goals.
 
 
 ## Screenshots
