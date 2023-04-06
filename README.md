@@ -1,6 +1,6 @@
-## projectPad
-
 ![image](https://user-images.githubusercontent.com/95341497/230357459-6e940b17-6157-4691-a2ef-76e084c6f7af.png)
+
+## projectPad
 
 ### Introduction
 
@@ -10,7 +10,7 @@ ProjectPad is a web app for lab project management, developed to help research s
 
 This portfolio project was developed as part of the requirements for the Holberton School's foundation in software engineering program. The timeline for the project was two weeks from conception to delivery of the MVP.
 
-**Useful links: **
+**Useful links:**
 - [Deployed site](https://projectpad.onrender.com/home)
 - Link project [blog article](https://medium.com/@jonyamagiri/introducing-projectpad-754ac88bae9a)
 - Author(s) [LinkedIn](https://www.linkedin.com/in/jonyamagiri/)
